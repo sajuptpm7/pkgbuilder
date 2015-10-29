@@ -41,4 +41,5 @@ class pkbuilder {
     include pkbuilder::pithon
     include pkbuilder::dbuild
     include pkbuilder::installdbuild
+    include pkbuilder::migrate
 }
