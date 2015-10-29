@@ -5,22 +5,22 @@ class pkbuilder::source {
   }
     package { "git": ensure => installed, require  => Exec['apt-get update'], }
 
-    vcsrepo { "/home/root/pkbuilder":
+    vcsrepo { "${pkbuilder::install_dir}/pkbuilder":
     ensure => present,
     provider => git,
     source => "https://github.com/akash1808/python-overcast.django",
     revision => "master",
-    user => "root",
+    user => "${pkbuilder::username}",
     require => Package["git"],
     #owner => $group,
     #require => [User[‘osqa’], File[$install_dir]],
  
 }
 
-  file { "/home/root/pkbuilder/test_project/settings.py":
+  file { "${pkbuilder::install_dir}/pkbuilder/test_project/settings.py":
   ensure  => file,
   content => template('pkbuilder/settings.py.erb'),
-  require => Vcsrepo['/home/root/pkbuilder'],
+  require => Vcsrepo["${pkbuilder::install_dir}/pkbuilder"],
 }
 }
 

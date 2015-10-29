@@ -35,11 +35,23 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class pkbuilder {
+class pkbuilder (
+ $install_dir = '/home/root',
+ $username = 'root',
+# $group = 'osqa',
+ $db_rootuser = 'root',
+ $db_rootpassword = 'root',
+ $db_name = 'pbuild1',
+ $db_username = 'pbuild1',
+ $db_password = 'packit',
+ $public_ip = '127.0.0.1'
+ 
+ ){
     include pkbuilder::db
     include pkbuilder::source
     include pkbuilder::pithon
     include pkbuilder::dbuild
     include pkbuilder::installdbuild
     include pkbuilder::migrate
+    Class['pkbuilder::db'] ->  Class['pkbuilder::source']  ->  Class['pkbuilder::pithon']  ->  Class['pkbuilder::dbuild'] ->  Class['pkbuilder::installdbuild']  ->  Class['pkbuilder::migrate']
 }

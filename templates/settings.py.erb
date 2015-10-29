@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'test_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pkbuilder',
-        'USER': 'packager',
-        'PASSWORD': 'packit',
+        'NAME': '<%= @db_name %>',
+        'USER': '<%= @db_username %>',
+        'PASSWORD': '<%= @db_password %>',
     }
 }
 
@@ -105,10 +105,10 @@ STATIC_ROOT = 'staticfiles'
 SOCIAL_AUTH_GITHUB_KEY = '071bedc80470459378e6'
 SOCIAL_AUTH_GITHUB_SECRET = 'abab06ae0870cdbc57ce15466fadcf1a44109d4a'
 SOCIAL_AUTH_GITHUB_SCOPE = ['read:org']
-GITHUB_AUTH_CALLBACK = 'http://54.254.240.24/complete/github'
+GITHUB_AUTH_CALLBACK = 'http://<%= @public_ip %>/complete/github'
 BUILDSVC_REPOS_BASE_DIR = os.path.join(BASE_DIR, 'data', 'repos')
 BUILDSVC_REPOS_BASE_PUBLIC_DIR = os.path.join(BASE_DIR, 'data', 'public_repos')
-BUILDSVC_REPOS_BASE_URL = 'http://54.254.240.24/apt/'
+BUILDSVC_REPOS_BASE_URL = 'http://<%= @public_ip %>/apt/'
 BUILDSVC_DEFAULT_SERIES_NAME = 'overcast'
 BUILDSVC_DEBEMAIL = 'pkgbuild@overcastcloud.com'
 BUILDSVC_DEBFULLNAME = 'Overcast Package Building Service'
@@ -137,7 +137,7 @@ CELERYBEAT_SCHEDULE = {
 }
 
 CELERY_TIMEZONE = TIME_ZONE
-GITHUB_AUTH_CALLBACK = 'http://54.254.240.24/'
+GITHUB_AUTH_CALLBACK = 'http://<%= @public_ip %>/'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',

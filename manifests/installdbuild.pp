@@ -1,8 +1,8 @@
 class pkbuilder::installdbuild {
 exec { 'Install python-dbuild':
- cwd => "/home/root/pkbuilder",
+ cwd => "${pkbuilder::install_dir}/pkbuilder",
  provider => shell,
- user => root,
+ user => "${pkbuilder::username}",
  command => ". venv/bin/activate && pip install -e 'git+https://github.com/hkumarmk/python-dbuild@master#egg=Package'",
  refreshonly => false,
 # require => Class['docker'],

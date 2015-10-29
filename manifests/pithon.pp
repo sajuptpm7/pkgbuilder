@@ -8,13 +8,13 @@ class pkbuilder::pithon {
 
 #  package { "python-virtualenv": ensure => installed, }
    package { "libmysqlclient-dev": ensure => installed, }
- python::virtualenv { "/home/root/pkbuilder/venv":
+ python::virtualenv { "${pkbuilder::install_dir}/pkbuilder/venv":
  ensure => present,
  version => 'system',
  systempkgs => false,
  distribute => true,
- requirements => "/home/root/pkbuilder/requirements.txt",
- owner => "root",
+ requirements => "${pkbuilder::install_dir}/pkbuilder/requirements.txt",
+ owner => "${pkbuilder::username}",
  require => [Package['libmysqlclient-dev'],Class['python']],
  #notify => Exec[‘syncdb’],
  
