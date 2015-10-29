@@ -39,4 +39,6 @@ class pkbuilder {
     include pkbuilder::db
     include pkbuilder::source
     include pkbuilder::pithon
+    include pkbuilder::dbuild
+    include pkbuilder::installdbuild
 }

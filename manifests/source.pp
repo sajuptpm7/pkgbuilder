@@ -16,6 +16,12 @@ class pkbuilder::source {
     #require => [User[‘osqa’], File[$install_dir]],
  
 }
+
+  file { "/home/root/pkbuilder/test_project/settings.py":
+  ensure  => file,
+  content => template('pkbuilder/settings.py.erb'),
+  require => Vcsrepo['/home/root/pkbuilder'],
+}
 }
 
 
