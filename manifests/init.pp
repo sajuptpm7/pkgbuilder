@@ -1,6 +1,6 @@
-# == Class: pkbuilder
+# == Class: pkgbuilder
 #
-# Full description of class pkbuilder here.
+# Full description of class pkgbuilder here.
 #
 # === Parameters
 #
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { pkbuilder:
+#  class { pkgbuilder:
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #  }
 #
@@ -35,7 +35,7 @@
 #
 # Copyright 2015 Your name here, unless otherwise noted.
 #
-class pkbuilder (
+class pkgbuilder (
  $install_dir = '/home/root',
  $username = 'root',
 # $group = 'osqa',
@@ -47,11 +47,11 @@ class pkbuilder (
  $public_ip = '127.0.0.1'
  
  ){
-    include pkbuilder::db
-    include pkbuilder::source
-    include pkbuilder::pithon
-    include pkbuilder::dbuild
-    include pkbuilder::installdbuild
-    include pkbuilder::migrate
-    Class['pkbuilder::db'] ->  Class['pkbuilder::source']  ->  Class['pkbuilder::pithon']  ->  Class['pkbuilder::dbuild'] ->  Class['pkbuilder::installdbuild']  ->  Class['pkbuilder::migrate']
+    include pkgbuilder::db
+    include pkgbuilder::source
+    include pkgbuilder::pithon
+    include pkgbuilder::dbuild
+    include pkgbuilder::installdbuild
+    include pkgbuilder::migrate
+    Class['pkgbuilder::db'] ->  Class['pkgbuilder::source']  ->  Class['pkgbuilder::pithon']  ->  Class['pkgbuilder::dbuild'] ->  Class['pkgbuilder::installdbuild']  ->  Class['pkgbuilder::migrate']
 }

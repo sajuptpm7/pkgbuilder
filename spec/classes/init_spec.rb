@@ -1,7 +1,7 @@
 require 'spec_helper'
-describe 'pkbuilder' do
+describe 'pkgbuilder' do
 
   context 'with defaults for all parameters' do
-    it { should contain_class('pkbuilder') }
+    it { should contain_class('pkgbuilder') }
   end
 end

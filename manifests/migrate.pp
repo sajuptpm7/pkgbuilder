@@ -1,9 +1,9 @@
-class pkbuilder::migrate {
+class pkgbuilder::migrate {
 
 exec { 'migrate':
- cwd => "${pkbuilder::install_dir}/pkbuilder",
+ cwd => "${pkgbuilder::install_dir}/pkgbuilder",
  provider => shell,
- user => "${pkbuilder::username}",
+ user => "${pkgbuilder::username}",
  command => ". venv/bin/activate && python manage.py migrate",
  refreshonly => false,
  #notify => Exec[‘migrate-forum’],

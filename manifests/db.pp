@@ -1,13 +1,13 @@
-class pkbuilder::db {
+class pkgbuilder::db {
     service { "mysql":
     enable => true,
     ensure => running,
 #    require => Package["mysql-server"],
   }
 
-    mysqldb { "${pkbuilder::db_name}":
-        user => "${pkbuilder::db_username}",
-        password => "${pkbuilder::db_password}",
+    mysqldb { "${pkgbuilder::db_name}":
+        user => "${pkgbuilder::db_username}",
+        password => "${pkgbuilder::db_password}",
     }
 }
 
@@ -15,7 +15,7 @@ class pkbuilder::db {
 define mysqldb( $user, $password ) {
     exec { "create-${name}-db":
       unless => "/usr/bin/mysql -u${user} -p${password} ${name}",
-      command => "/usr/bin/mysql -u${pkbuilder::db_rootuser} -p${pkbuilder::db_rootpassword} -e \"create database ${name}; grant all on ${name}.* to ${user}@localhost identified by '$password';\"",
+      command => "/usr/bin/mysql -u${pkgbuilder::db_rootuser} -p${pkgbuilder::db_rootpassword} -e \"create database ${name}; grant all on ${name}.* to ${user}@localhost identified by '$password';\"",
       require => Service["mysql"],
     }
   }

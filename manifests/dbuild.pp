@@ -1,4 +1,4 @@
-class pkbuilder::dbuild {
+class pkgbuilder::dbuild {
 class { 'docker':
   manage_kernel => false,
 }
