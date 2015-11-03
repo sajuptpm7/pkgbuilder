@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+		'aasemble.django.apps.main.context_processors.internal_name_change',
             ],
         },
     },
@@ -143,7 +144,7 @@ CORS_ORIGIN_WHITELIST = ()
 CORS_ALLOW_CREDENTIALS = True
 
 # Request access to user's org memberships
-SOCIALACCOUNT_PROVIDERS = {'github': {'SCOPE': ['read:org']}}
+SOCIALACCOUNT_PROVIDERS = {'github': {'SCOPE': ['read:org','user:email']}}
 
 # Don't send account verification e-mails
 ACCOUNT_EMAIL_VERIFICATION = "none"
