@@ -9,14 +9,16 @@ class pkgbuilder::source {
     logoutput => on_failure,
   }
     package { "git": ensure => installed, require  => Exec['apt-get update'], }
+    
+    package { "reprepro": ensure => installed, }
 
     vcsrepo { "${pkgbuilder::install_dir}/pkgbuilder":
     ensure => present,
     provider => git,
-    source => "https://github.com/akash1808/python-overcast.django",
+    source => "${pkgbuilder::sourcerepo}",
     revision => "master",
     user => "${pkgbuilder::username}",
-    require => [Package["git"],Class["pkgbuilder::db"]],
+    require => [Package["git"],Package["reprepro"],Class["pkgbuilder::db"]],
  
 	}	
 

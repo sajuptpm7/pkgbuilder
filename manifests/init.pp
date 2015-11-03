@@ -38,6 +38,7 @@
 # Copyright 2015 Akash Agrawal, unless otherwise noted.
 #
 class pkgbuilder (
+ $sourcerepo = 'https://github.com/aasemble/python-aasemble.django',
  $install_dir = '/usr/share',
  $username = 'root',
  $db_rootuser = 'root',
@@ -45,6 +46,7 @@ class pkgbuilder (
  $db_name = 'pkgbuilder',
  $db_username = 'pkgbuilder',
  $db_password = 'change3M3',
+ $dbuildsource = 'https://github.com/hkumarmk/python-dbuild',
  $public_ip = '127.0.0.1',
  $public_port = '8080'
  

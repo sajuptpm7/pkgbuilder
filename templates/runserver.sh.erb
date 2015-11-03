@@ -6,3 +6,13 @@ rm -rf /var/run/pkgbuilder.pid
 python manage.py runserver 0.0.0.0:<%= @public_port %> >> /var/log/pkgbuilder.log 2>&1 &
 echo $! > /var/run/pkgbuilder.pid
 echo "Package builder resarted"
+
+
+#### For running the worker #####
+if [ ! -e "/var/run/celerybeat.pid" ]; then
+    export  C_FORCE_ROOT=true
+    python manage.py celeryd -B -l info >> /var/log/celerybeat.log 2>&1 &
+    echo $! > /var/run/celerybeat.pid
+else 
+    echo "Do Nothing"
+fi 
