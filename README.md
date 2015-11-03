@@ -15,9 +15,8 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+A puppet module to automatically install and configure pkgbuilder on ubuntu14.04 
+It supports puppet 3.0 or higher
 
 ## Module Description
 
@@ -45,11 +44,7 @@ etc.), mention it here.
 
 ### Beginning with pkgbuilder
 
-The very basic steps needed for a user to get the module up and running.
-
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+All we need for getting this module working is a mysql server running on system.
 
 ## Usage
 
