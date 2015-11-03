@@ -11,6 +11,7 @@ exec { 'Install python-dbuild':
  user => "${pkgbuilder::username}",
  command => ". venv/bin/activate && pip install -e 'git+https://github.com/hkumarmk/python-dbuild@master#egg=Package'",
  refreshonly => false,
+ require => [Class["pkgbuilder::dockerinstall"],Class["pkgbuilder::pythoninstall"]],
  }
 
 }

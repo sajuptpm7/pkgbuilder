@@ -48,9 +48,8 @@ class pkgbuilder (
  ){
     include pkgbuilder::db
     include pkgbuilder::source
-    include pkgbuilder::pithon
-    include pkgbuilder::dbuild
-    include pkgbuilder::installdbuild
+    include pkgbuilder::pythoninstall
+    include pkgbuilder::dockerinstall
+    include pkgbuilder::dbuildinstall
     include pkgbuilder::migrate
-    Class['pkgbuilder::db'] ->  Class['pkgbuilder::source']  ->  Class['pkgbuilder::pythoninstall']  ->  Class['pkgbuilder::dockerinstall'] ->  Class['pkgbuilder::dbuildinstall']  ->  Class['pkgbuilder::migrate']
 }

@@ -12,6 +12,7 @@ exec { 'migrate':
  user => "${pkgbuilder::username}",
  command => ". venv/bin/activate && python manage.py migrate",
  refreshonly => false,
+ require => [Class["pkgbuilder::db"],Class["pkgbuilder::dbuildinstall"],Class["pkgbuilder::pythoninstall"]],
  }
 
 }

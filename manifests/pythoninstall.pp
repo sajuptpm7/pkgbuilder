@@ -22,7 +22,7 @@ class pkgbuilder::pythoninstall {
  distribute => true,
  requirements => "${pkgbuilder::install_dir}/pkgbuilder/requirements.txt",
  owner => "${pkgbuilder::username}",
- require => [Package['libmysqlclient-dev'],Class['python']],
+ require => [Package['libmysqlclient-dev'],Class['python'],Class["pkgbuilder::source"]],
  
 	}
 }

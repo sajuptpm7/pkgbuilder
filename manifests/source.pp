@@ -16,7 +16,7 @@ class pkgbuilder::source {
     source => "https://github.com/akash1808/python-overcast.django",
     revision => "master",
     user => "${pkgbuilder::username}",
-    require => Package["git"],
+    require => [Package["git"],Class["pkgbuilder::db"]],
  
 	}	
 
