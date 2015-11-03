@@ -1,49 +1,48 @@
 # == Class: pkgbuilder
 #
-# Full description of class pkgbuilder here.
+# This class aims to act as a central place for including other classes
 #
 # === Parameters
 #
-# Document parameters here.
+# [*install_dir*]
+#   Location where pkgbuilder will get installed.
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
+# [*username*]
+#   user under which pkgbuilder gets installed.
 #
-# === Variables
+# [*db_rootuser*]
+#   root user for database which pkgbuilder uses
 #
-# Here you should define a list of variables that this module would require.
+# [*db_rootpassword*]
+#   root password for database which pkgbuilder uses
 #
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
+# [*db_username*]
+#   username with which code will connect to database
 #
-# === Examples
+# [*db_password*]
+#   password with which code will connect to database
 #
-#  class { pkgbuilder:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+# [*public_ip*]
+#   public_ip or dns name where the service is deployed
+#
+#   
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Author Name <akash.agrawal1992@gmail.com>
 #
 # === Copyright
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2015 Akash Agrawal, unless otherwise noted.
 #
 class pkgbuilder (
- $install_dir = '/home/root',
+ $install_dir = '/usr/share',
  $username = 'root',
-# $group = 'osqa',
  $db_rootuser = 'root',
  $db_rootpassword = 'root',
- $db_name = 'pbuild1',
- $db_username = 'pbuild1',
- $db_password = 'packit',
+ $db_name = 'pkgbuilder',
+ $db_username = 'pkgbuilder',
+ $db_password = 'change3M3',
  $public_ip = '127.0.0.1'
  
  ){
@@ -53,5 +52,5 @@ class pkgbuilder (
     include pkgbuilder::dbuild
     include pkgbuilder::installdbuild
     include pkgbuilder::migrate
-    Class['pkgbuilder::db'] ->  Class['pkgbuilder::source']  ->  Class['pkgbuilder::pithon']  ->  Class['pkgbuilder::dbuild'] ->  Class['pkgbuilder::installdbuild']  ->  Class['pkgbuilder::migrate']
+    Class['pkgbuilder::db'] ->  Class['pkgbuilder::source']  ->  Class['pkgbuilder::pythoninstall']  ->  Class['pkgbuilder::dockerinstall'] ->  Class['pkgbuilder::dbuildinstall']  ->  Class['pkgbuilder::migrate']
 }

@@ -1,8 +1,13 @@
+# == Class: pkgbuilder::db
+#
+# This class is used to create database for pkgbuilder along with user 
+# and password. Parameters come from init.pp
+# ==
+
 class pkgbuilder::db {
     service { "mysql":
     enable => true,
     ensure => running,
-#    require => Package["mysql-server"],
   }
 
     mysqldb { "${pkgbuilder::db_name}":
