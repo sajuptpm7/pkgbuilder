@@ -24,6 +24,8 @@
 #
 # [*public_ip*]
 #   public_ip or dns name where the service is deployed
+# [*public_port*]
+#   public_port where the server is listening
 #
 #   
 #
@@ -43,7 +45,8 @@ class pkgbuilder (
  $db_name = 'pkgbuilder',
  $db_username = 'pkgbuilder',
  $db_password = 'change3M3',
- $public_ip = '127.0.0.1'
+ $public_ip = '127.0.0.1',
+ $public_port = '8080'
  
  ){
     include pkgbuilder::db
@@ -52,4 +55,5 @@ class pkgbuilder (
     include pkgbuilder::dockerinstall
     include pkgbuilder::dbuildinstall
     include pkgbuilder::migrate
+    include pkgbuilder::runserver
 }
