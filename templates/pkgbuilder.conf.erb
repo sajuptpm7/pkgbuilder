@@ -1,0 +1,10 @@
+<VirtualHost <%= @public_ip %>:80>
+DocumentRoot "<%= @install_dir %>/pkgbuilder/data/public_repos"
+    ServerName localhost
+    ServerPath "/apt/"
+  <Directory />
+    AllowOverride All
+  </Directory>
+#    RewriteEngine On
+#    RewriteRule "^(/apt/.*)" "<%= @install_dir %>$1"
+</VirtualHost>

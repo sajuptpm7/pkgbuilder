@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "Restarting packagebuilder ---->"
+lsof -i tcp:<%= @public_port %> | awk 'NR!=1 {print $2}' | xargs kill
+rm -rf /var/run/pkgbuilder.pid
+. venv/bin/activate
+python manage.py runserver 0.0.0.0:<%= @public_port %> >> /var/log/pkgbuilder.log 2>&1 &
+echo $! > /var/run/pkgbuilder.pid
+echo "Package builder resarted"
+
+
+#### For running the worker #####
+if [ ! -e "/var/run/celerybeat.pid" ]; then
+    export  C_FORCE_ROOT=true
+    python manage.py celeryd -B -l info >> /var/log/celerybeat.log 2>&1 &
+    echo $! > /var/run/celerybeat.pid
+else 
+    echo "Do Nothing"
+fi 
