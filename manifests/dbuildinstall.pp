@@ -29,8 +29,7 @@ class pkgbuilder::dbuildinstall (
   ensure       => file,
   content      => template('pkgbuilder/dockerfile.jinja.erb'),
   mode         => 744,
-  before       => Exec["Install python-dbuild"],
-  require      => [Vcsrepo["${pkgbuilder::install_dir}/python-dbuild"],File["${pkgbuilder::install_dir}/python-dbuild"]],
+  require      => [Vcsrepo["${pkgbuilder::install_dir}/python-dbuild"],File["${pkgbuilder::install_dir}/python-dbuild"],Exec["Install python-dbuild"]],
         }
  exec { 'Install python-dbuild':
    cwd         => "${pkgbuilder::install_dir}/pkgbuilder",
@@ -38,7 +37,7 @@ class pkgbuilder::dbuildinstall (
    user        => "${pkgbuilder::username}",
    command     => ". venv/bin/activate && pip install  '${pkgbuilder::install_dir}/python-dbuild'",
    refreshonly => false,
-   require     => [Class["pkgbuilder::dockerinstall"],Class["pkgbuilder::pythonvenv"],Vcsrepo["${pkgbuilder::install_dir}/python-dbuild"],File["${pkgbuilder::install_dir}/pkgbuilder/venv/local/lib/python2.7/site-packages/dbuild/templates/dockerfile.jinja"]],
+   require     => [Class["pkgbuilder::dockerinstall"],Class["pkgbuilder::pythonvenv"],Vcsrepo["${pkgbuilder::install_dir}/python-dbuild"]],
  }
 
 }
