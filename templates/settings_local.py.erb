@@ -1,0 +1,14 @@
+AASEMBLE_OVERRIDE_NAME = "Jio Package Builder"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '<%= @db_name %>',
+        'USER': '<%= @db_username %>',
+        'PASSWORD': '<%= @db_password %>',
+    }
+}
+
+BUILDSVC_REPOS_BASE_URL = 'http://<%= @public_ip %>/apt'
+BUILDSVC_DEFAULT_SERIES_NAME = 'jiocloud'
+GITHUB_AUTH_CALLBACK = 'http://<%= @public_ip %>:<%= @public_port %>/'

@@ -31,9 +31,9 @@ class pkgbuilder::source (
  
   }	
 
-  file { "${pkgbuilder::install_dir}/pkgbuilder/test_project/settings.py":
+  file { "${pkgbuilder::install_dir}/pkgbuilder/test_project/settings_local.py":
     ensure        => file,
-    content       => template('pkgbuilder/settings.py.erb'),
+    content       => template('pkgbuilder/settings_local.py.erb'),
     require       => Vcsrepo["${pkgbuilder::install_dir}/pkgbuilder"],
   }
 
