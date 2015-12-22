@@ -6,7 +6,7 @@
 #   source repo for python dbuild
 
 class pkgbuilder::dbuildinstall (
- $dbuildsource  = 'https://github.com/hkumarmk/python-dbuild'
+ $dbuildsource  = 'https://github.com/aaSemble/python-dbuild'
 
  ){
 
