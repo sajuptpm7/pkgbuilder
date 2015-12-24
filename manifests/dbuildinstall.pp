@@ -19,7 +19,7 @@ class pkgbuilder::dbuildinstall (
 
   }
   vcsrepo { "${pkgbuilder::install_dir}/python-dbuild":
-    ensure        => present,
+    ensure        => 'latest',
     provider      => git,
     source        => "${dbuildsource}",
     revision      => "master",

@@ -22,7 +22,7 @@ class pkgbuilder::source (
     before        => Class["pkgbuilder::pythonvenv"],
   }
   vcsrepo { "${pkgbuilder::install_dir}/pkgbuilder":
-    ensure        => present,
+    ensure        => 'latest',
     provider      => git,
     source        => "${sourcerepo}",
     revision      => "master",
