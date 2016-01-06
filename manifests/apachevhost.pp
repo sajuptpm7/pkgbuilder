@@ -9,7 +9,7 @@ class pkgbuilder::apachevhost {
  port              => 80,
  docroot           => "${pkgbuilder::install_dir}/pkgbuilder",
  servername        => "${pkgbuilder::server_name}",
- vhost_name        => "${pkgbuilder::public_ip}",
+ vhost_name        => "${pkgbuilder::vhost_name}",
  serveraliases     => ["${pkgbuilder::server_name}"],
  options           => ['Indexes','FollowSymLinks','MultiViews'],
  directories       => [{ path => "${pkgbuilder::install_dir}/pkgbuilder/data/public_repos/", order => 'allow,deny', allow => 'from all',options => ['Indexes','FollowSymLinks','MultiViews'] },{ path => "${pkgbuilder::install_dir}/pkgbuilder/mirrors/snapshots/", order => 'allow,deny', allow => 'from all',options => ['Indexes','FollowSymLinks','MultiViews'] }],
