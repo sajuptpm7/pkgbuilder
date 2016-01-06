@@ -28,9 +28,10 @@ class pkgbuilder (
  $install_dir = '/var/lib',
  $username    = 'pkgbuilder',
  $group       = 'www-data',
- $public_ip   = '127.0.0.1',
+ $public_ip   = '*',
  $public_port = '9000',
  $log_dir     = '/var/log/pkgbuilder' ,
+ $server_name  = 'pkgbuilder.corp.jiocloud.com',
  $proxy       = 'http://10.140.218.59:3128/'
  ){
     include pkgbuilder::createuser
