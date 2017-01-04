@@ -8,7 +8,7 @@ class pkgbuilder::dockerinstall {
 class { 'docker':
   manage_kernel => false,
   docker_users  => [pkgbuilder],
-  proxy => $rjil::system::apt::proxy,
+  proxy => $pkgbuilder::proxy,
   extra_parameters => ['--bip=192.168.1.1/24'],
       }
 }

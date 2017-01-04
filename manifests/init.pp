@@ -31,9 +31,9 @@ class pkgbuilder (
  $public_ip   = '127.0.0.1',
  $public_port = '9000',
  $log_dir     = '/var/log/pkgbuilder' ,
- $server_name = 'pkgbuilder.corp.jiocloud.com',
+ $server_name = 'pkgbuilder.corp.jiocloudvpc.com',
  $vhost_name  = '*',
- $proxy       = 'http://10.140.218.59:3128/'
+ $proxy       = 'http://10.140.221.232:3128/'
  ){
     include pkgbuilder::createuser
     include pkgbuilder::db
