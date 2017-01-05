@@ -3,7 +3,7 @@ base_url = "#{git_protocol}://github.com"
 
 mod 'garethr-docker',
   :git => "#{base_url}/garethr/garethr-docker",
-  :ref => '4.1.1'
+  :ref => 'v4.1.1'
 
 mod 'puppetlabs/apt',
   :git => "#{base_url}/puppetlabs/puppetlabs-apt",

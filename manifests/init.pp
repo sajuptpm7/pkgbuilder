@@ -45,3 +45,8 @@ class pkgbuilder (
     include pkgbuilder::scripts
     include pkgbuilder::apachevhost
 }
+
+
+include pkgbuilder
+
+
