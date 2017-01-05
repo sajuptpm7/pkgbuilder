@@ -1,7 +1,7 @@
 git_protocol=ENV['git_protocol'] || 'git'
 base_url = "#{git_protocol}://github.com"
 
-mod 'garethr-docker',
+mod 'garethr/docker',
   :git => "#{base_url}/garethr/garethr-docker",
   :ref => 'v4.1.1'
 
@@ -17,11 +17,19 @@ mod 'puppetlabs/vscrepo',
   :git => "#{base_url}/puppetlabs/puppetlabs-vcsrepo",
   :ref => '1.3.1'
 
-mod 'stahnma-epel',
+mod 'stahnma/epel',
   :git => "#{base_url}/stahnma/puppet-module-epel",
   :ref => '1.1.1'
 
-mod 'stankevich-python',
+mod 'stankevich/python',
   :git => "#{base_url}/stankevich/puppet-python",
   :ref => '1.10.0'
+
+mod 'puppetlabs/mysql',
+  :git => "#{base_url}/puppetlabs/puppetlabs-mysql",
+  :ref => '2.2.x'
+
+mod 'puppetlabs/apache',
+  :git => "#{base_url}/puppetlabs/puppetlabs-apache",
+  :ref => '1.2.0'
 
