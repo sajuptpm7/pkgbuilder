@@ -33,3 +33,8 @@ mod 'puppetlabs/apache',
   :git => "#{base_url}/puppetlabs/puppetlabs-apache",
   :ref => '1.2.0'
 
+mod 'puppetlabs/concat',
+  :git => "#{base_url}/puppetlabs/puppetlabs-concat",
+  :ref => '1.1.1'
+
+
