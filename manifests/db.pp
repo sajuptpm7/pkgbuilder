@@ -29,19 +29,25 @@ class pkgbuilder::db  (
 
  ){
 
-  exec {"check_presence .my.cnf":
-  command  => '/bin/true',
-  path     => ['/usr/bin','/usr/sbin','/bin','/sbin'],
-  onlyif   => '/usr/bin/test -e /root/.my.cnf',
-  require  => [Service["mysql"],File[ "/root/.my.cnf"]],
+
+  class{'::mysql::server':
+    old_root_password => 'root',
+    root_password => 'root',
   }
+
+  #exec {"check_presence .my.cnf":
+  #command  => '/bin/true',
+  #path     => ['/usr/bin','/usr/sbin','/bin','/sbin'],
+  #onlyif   => '/usr/bin/test -e /root/.my.cnf',
+  #require  => [Service["mysql"],File[ "/root/.my.cnf"]],
+  #}
 
  mysql::db { "${db_name}":
   user     => "${db_username}",
   password => "${db_password}",
   host     => 'localhost',
   grant    => ['ALL'],
-  require  => Exec["check_presence .my.cnf"],
+  require  => [Service["mysql"]],
   }
  
 }

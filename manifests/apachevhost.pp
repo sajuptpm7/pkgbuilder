@@ -5,6 +5,8 @@
 
 class pkgbuilder::apachevhost {
 
+ include ::apache
+
  apache::vhost { 'pkgbuilder-vhost':
  port              => 80,
  docroot           => "${pkgbuilder::install_dir}/pkgbuilder",

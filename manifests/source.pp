@@ -6,13 +6,22 @@
 #   source repo for pkgbuilder code
 
 class pkgbuilder::source (
- $sourcerepo      = 'https://github.com/aaSemble/python-aasemble.django',
+ $sourcerepo      = 'https://github.com/sajuptpm7/package-builder',
  $db_rootuser     = $pkgbuilder::db::db_rootuser,
  $db_rootpassword = $pkgbuilder::db::db_rootpassword,
  $db_name         = $pkgbuilder::db::db_name,
  $db_username     = $pkgbuilder::db::db_username,
  $db_password     = $pkgbuilder::db::db_password,
 ){
+
+  package { 'git':
+    ensure => present,
+  }
+
+  package { 'reprepro':
+    ensure => present,
+  }
+
   file { "${pkgbuilder::install_dir}/pkgbuilder":
     ensure        => 'directory',
     owner         =>  "${pkgbuilder::username}",
@@ -25,7 +34,7 @@ class pkgbuilder::source (
     ensure        => 'latest',
     provider      => git,
     source        => "${sourcerepo}",
-    revision      => "master",
+    revision      => "exp1",
     require       => [Package["git"],Package["reprepro"],Class["pkgbuilder::createuser"],Class["pkgbuilder::db"]],
     loglevel      => debug,
  
